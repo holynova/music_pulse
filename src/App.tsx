@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ControlDock } from './components/ControlDock';
 import { Icon } from './components/Icons';
 import { PulseCanvas } from './components/PulseCanvas';
@@ -64,7 +64,7 @@ function isSupportedAudio(file: File): boolean {
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const trackPickerRef = useRef<HTMLElement>(null);
   const reanalysisTimerRef = useRef<number | null>(null);
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -85,6 +85,13 @@ function App() {
   const activeBeatIndex = findBeatIndex(result?.beats ?? [], currentTime);
   const duration = result?.duration ?? 0;
   const isReady = analysis.phase === 'ready' && Boolean(result && trajectory);
+
+  const revealTrackPicker = useCallback(() => {
+    const picker = trackPickerRef.current;
+    if (!picker) return;
+    picker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    picker.focus({ preventScroll: true });
+  }, []);
 
   const loadFile = useCallback((nextFile: File) => {
     setLoadingDemoId(null);
@@ -117,12 +124,6 @@ function App() {
       setFileError(error instanceof Error ? error.message : copy.includedSampleLoadFailed);
     }
   }, [copy.includedSampleLoadFailed, copy.includedSampleUnavailable, loadFile]);
-
-  const handleFileInput = (event: ChangeEvent<HTMLInputElement>) => {
-    const nextFile = event.target.files?.[0];
-    if (nextFile) loadFile(nextFile);
-    event.target.value = '';
-  };
 
   const handleTogglePlay = useCallback(async () => {
     const audio = audioRef.current;
@@ -217,11 +218,10 @@ function App() {
           >
             {language === 'en' ? '中文' : 'EN'}
           </button>
-          <button className="change-track-button" type="button" onClick={() => fileInputRef.current?.click()}>
+          <button className="change-track-button" type="button" onClick={revealTrackPicker}>
             <Icon name="upload" />
             {file ? copy.changeTrack : copy.loadTrack}
           </button>
-          <input ref={fileInputRef} className="sr-only" type="file" accept="audio/*" onChange={handleFileInput} aria-label={copy.chooseAnotherAudio} />
         </div>
       </header>
 
@@ -237,6 +237,29 @@ function App() {
               <span>{analysis.phase === 'ready' ? formatMoments(language, result?.beats.length ?? 0) : analysis.phase === 'idle' ? copy.waitingForTrack : analysis.message}</span>
             </div>
           </div>
+
+          <section
+            ref={trackPickerRef}
+            className="track-picker"
+            aria-labelledby="track-picker-title"
+            tabIndex={-1}
+          >
+            <div className="track-picker-header">
+              <div>
+                <p className="eyebrow">{copy.chooseTrackEyebrow}</p>
+                <h2 id="track-picker-title">{copy.chooseTrackTitle}</h2>
+                <p>{copy.chooseTrackBody}</p>
+              </div>
+              <span className="track-picker-note">{copy.localOnly}</span>
+            </div>
+            <UploadPanel
+              language={language}
+              onFile={loadFile}
+              demoTracks={DEMO_TRACKS}
+              demoLoadingId={loadingDemoId}
+              onDemo={(track) => void loadDemo(track)}
+            />
+          </section>
 
           <div className="visual-stage">
             {isReady && trajectory ? (
@@ -264,7 +287,7 @@ function App() {
                 <p className="eyebrow">{copy.cannotMakeMap}</p>
                 <h2>{fileError ?? copy.cannotAnalyzeTrack}</h2>
                 <p className="state-copy">{copy.tryAnotherTrack}</p>
-                <button className="button button-secondary" type="button" onClick={() => fileInputRef.current?.click()}>{copy.chooseAnother}</button>
+                <button className="button button-secondary" type="button" onClick={revealTrackPicker}>{copy.chooseAnother}</button>
               </div>
             ) : (
               <div className="stage-state stage-state-empty">
@@ -277,26 +300,6 @@ function App() {
             <div className="stage-corner stage-corner-left">{copy.xTime}</div>
             <div className="stage-corner stage-corner-right">{isPlaying ? copy.playing : copy.paused}</div>
           </div>
-
-          {!file && (
-            <section className="track-picker" aria-labelledby="track-picker-title">
-              <div className="track-picker-header">
-                <div>
-                  <p className="eyebrow">{copy.chooseTrackEyebrow}</p>
-                  <h2 id="track-picker-title">{copy.chooseTrackTitle}</h2>
-                  <p>{copy.chooseTrackBody}</p>
-                </div>
-                <span className="track-picker-note">{copy.localOnly}</span>
-              </div>
-              <UploadPanel
-                language={language}
-                onFile={loadFile}
-                demoTracks={DEMO_TRACKS}
-                demoLoadingId={loadingDemoId}
-                onDemo={(track) => void loadDemo(track)}
-              />
-            </section>
-          )}
 
           {result && trajectory && (
             <>
@@ -317,7 +320,7 @@ function App() {
                 duration={duration}
                 onTogglePlay={() => void handleTogglePlay()}
                 onRestart={handleRestart}
-                onChooseAnother={() => fileInputRef.current?.click()}
+                onChooseAnother={revealTrackPicker}
               />
             </>
           )}
