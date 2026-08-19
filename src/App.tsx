@@ -10,6 +10,8 @@ import { formatMoments, getCopy, type Language } from './lib/i18n';
 import { buildTrajectory, findBeatIndex } from './lib/trajectory';
 import type { DemoTrack, PulseSettings } from './types/audio';
 
+const AUDIO_BASE = `${import.meta.env.BASE_URL}audio/`;
+
 const DEMO_TRACKS: DemoTrack[] = [
   {
     id: 'house',
@@ -17,7 +19,7 @@ const DEMO_TRACKS: DemoTrack[] = [
     artist: 'Play House',
     category: 'House · CC0',
     categoryZh: 'House · CC0',
-    src: '/audio/play-house-free.mp3',
+    src: `${AUDIO_BASE}play-house-free.mp3`,
     filename: 'Play House - FREE.mp3',
   },
   {
@@ -27,7 +29,7 @@ const DEMO_TRACKS: DemoTrack[] = [
     artist: 'Scott Joplin',
     category: 'Piano · Public Domain',
     categoryZh: '钢琴 · 公共领域',
-    src: '/audio/country-club-ragtime.mp3',
+    src: `${AUDIO_BASE}country-club-ragtime.mp3`,
     filename: 'Scott Joplin - Country Club.mp3',
   },
   {
@@ -37,7 +39,7 @@ const DEMO_TRACKS: DemoTrack[] = [
     artist: 'Edvard Grieg',
     category: 'Classical · Public Domain',
     categoryZh: '古典 · 公共领域',
-    src: '/audio/grieg-piano-concerto.mp3',
+    src: `${AUDIO_BASE}grieg-piano-concerto.mp3`,
     filename: 'Edvard Grieg - Piano Concerto.mp3',
   },
 ];
