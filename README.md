@@ -6,6 +6,8 @@ Music Pulse is a local-first browser visualizer that finds energy peaks in an up
 
 Open the published browser version at <https://holynova.github.io/music_pulse/>.
 
+Cloudflare version: <https://music-pulse.xiaosang.cc/>.
+
 ## Run locally
 
 ```bash
@@ -18,9 +20,10 @@ Open the local URL printed by Vite. Audio is decoded and analyzed in the browser
 ## Commands
 
 ```bash
-pnpm test   # beat detection and trajectory tests
-pnpm lint   # ESLint
-pnpm build  # TypeScript and production build
+pnpm test           # beat detection and trajectory tests
+pnpm lint           # ESLint
+pnpm run build      # Cloudflare Static Assets -> dist/
+pnpm run build:pages # GitHub Pages -> docs/
 ```
 
 ## How the pulse map works
