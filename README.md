@@ -6,10 +6,18 @@ Music Pulse is a local-first browser visualizer that finds energy peaks in an up
 
 Open the published browser version at <https://holynova.github.io/music_pulse/>.
 
+## Try a pulse map
+
+1. Open the demo and choose one of the bundled tracks, or select a local audio file.
+2. Play the track and watch the path advance with the timeline.
+3. Seek to a different moment, then adjust sensitivity and minimum gap to compare detected pulses.
+
+The visualization follows detected energy changes; it does not claim to recover a musical score or beat grid.
+
 ## Run locally
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
