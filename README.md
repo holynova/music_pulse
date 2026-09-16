@@ -2,6 +2,11 @@
 
 Music Pulse is a local-first browser visualizer that finds energy peaks in an uploaded audio file and turns them into a playable path. The path advances with the audio clock, changes direction at detected moments, and exposes those moments on a seekable timeline.
 
+<p align="center">
+  <img src="assets/readme/hero.svg" width="100%" alt="Music Pulse: Music Pulse is a local-first browser visualizer that finds energy peaks in an uploaded audio file and turns them into a playable path. The path advances with the audio clock, chang">
+</p>
+
+
 ## Live demo
 
 Open the published browser version at <https://holynova.github.io/music_pulse/>.

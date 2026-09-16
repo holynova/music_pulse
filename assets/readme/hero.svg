@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Music Pulse</title>
+  <desc id="desc">Music Pulse is a local-first browser visualizer that finds energy peaks in an uploaded audio file and turns them into a playable path. The path advances with the audio clock, chang</desc>
+  <rect width="1200" height="360" rx="28" fill="#111724"/>
+  <path d="M0 310C250 280 410 342 650 300s350-18 550 20v40H0Z" fill="#71b1b4" opacity=".12"/>
+  <text x="58" y="52" fill="#df8e52" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2.5">AUDIO · PEAKS · PATH</text>
+  <path d="M58 70H710" stroke="#71b1b4" stroke-width="2" opacity=".6"/>
+  <text x="58" y="126" fill="#edf0f3" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="52" font-weight="700">Music Pulse</text>
+  <text x="60" y="190" fill="#71b1b4" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="21">Music Pulse is a local-first browser visualizer that finds</text><text x="60" y="220" fill="#71b1b4" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, sans-serif" font-size="21">energy peaks in an uploaded audio …</text>
+    <g transform="translate(60 274)"><rect width="250" height="34" rx="17" fill="#df8e52"/><text x="18" y="23" fill="#111724" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">PROJECT-NATIVE README</text></g>
+  <g transform="translate(810 70)"><path d="M28 128L316,92" fill="none" stroke="#71b1b4" stroke-width="2" opacity=".35"/><polyline points="28,92 52,146 76,110 100,164 124,110 148,146 172,92 196,146 220,110 244,164 268,110 292,146 316,92" fill="none" stroke="#df8e52" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 208h296" stroke="#71b1b4" stroke-width="4"/></g>
+</svg>
