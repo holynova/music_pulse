@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="360" viewBox="0 0 1200 360"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Music Pulse — 把音乐的卡点画成一条轨迹</title>
+  <desc id="desc">深色底标题：Music Pulse，副标题把音乐的卡点，画成一条轨迹；右侧是一条随卡点转向的脉冲轨迹折线，橙色圆点是能量峰值，下方是音频包络曲线。</desc>
+
+  <rect width="1200" height="360" rx="26" fill="#0b0f10"/>
+
+  <g id="title-block" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="56" y="62" font-size="19" letter-spacing="3" fill="#6ee7b7">LOCAL-FIRST · 浏览器本地分析</text>
+    <text x="56" y="128" font-size="58" font-weight="700" fill="#f2f7f4">Music Pulse</text>
+    <text x="56" y="168" font-size="23" fill="#d7e3dd">把音乐的卡点，画成一条轨迹</text>
+    <text x="56" y="204" font-size="19" fill="#9fb3ab">上传音频，本地找出能量峰值，播放时轨迹随卡点转向。</text>
+    <g id="chips" font-size="18" fill="#d7e3dd" text-anchor="middle">
+      <g><rect x="56" y="238" width="140" height="36" rx="18" fill="#16211d" stroke="#2a3d36" stroke-width="1.5"/><text x="126" y="262">3 首内置示例</text></g>
+      <g><rect x="208" y="238" width="170" height="36" rx="18" fill="#16211d" stroke="#2a3d36" stroke-width="1.5"/><text x="293" y="262">本地解码零上传</text></g>
+      <g><rect x="390" y="238" width="126" height="36" rx="18" fill="#16211d" stroke="#2a3d36" stroke-width="1.5"/><text x="453" y="262">中英双语</text></g>
+      <g><rect x="528" y="238" width="140" height="36" rx="18" fill="#16211d" stroke="#2a3d36" stroke-width="1.5"/><text x="598" y="262">React + Vite</text></g>
+    </g>
+  </g>
+
+  <g id="trajectory">
+    <polyline points="760,210 820,150 860,190 930,110 990,170 1030,120 1100,180 1140,140"
+      fill="none" stroke="#6ee7b7" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <g fill="#f59e0b">
+      <circle cx="820" cy="150" r="7"/>
+      <circle cx="930" cy="110" r="7"/>
+      <circle cx="990" cy="170" r="7"/>
+      <circle cx="1100" cy="180" r="7"/>
+    </g>
+    <g fill="#0b0f10" stroke="#f2f7f4" stroke-width="2">
+      <circle cx="1140" cy="140" r="8"/>
+    </g>
+    <path d="M 760 300 L 780 282 L 800 296 L 820 268 L 840 292 L 860 258 L 880 290 L 900 276 L 920 300 L 940 262 L 960 294 L 980 278 L 1000 300 L 1020 270 L 1040 296 L 1060 282 L 1080 300 L 1100 274 L 1120 296 L 1140 288"
+      fill="none" stroke="#3d5a4f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+  <g id="trajectory-labels" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#9fb3ab">
+    <text x="760" y="76">轨迹随播放前进，遇卡点转向</text>
+    <text x="760" y="336">包络曲线 · 能量峰值检测</text>
+  </g>
+</svg>
